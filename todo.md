@@ -1,4 +1,4 @@
-# ✅ Personal Site To-Do – Next.js + Contentlayer + Notion-style Portfolio
+# ✅ Personal Site To-Do – Next.js + Content Collections + Portfolio
 
 ## 🔧 Setup Project
 
@@ -6,21 +6,27 @@
 - [x] Set up basic folder structure (`/app`, `/components`, `/content`)
 - [x] Install Tailwind CSS
 - [x] Install and configure `shadcn/ui` or `radix-ui`
-- [x] Install Contentlayer
-- [x] Configure `contentlayer.config.ts` for `Blog` and `Portfolio` content types
+- [x] ~~Install Contentlayer~~ → Migrated to custom content collections
+- [x] Configure content loading from markdown files
 
-## 🧱 Content Models (Contentlayer)
+## 🧱 Content Models & Data
 
-- [x] Create `/content/blog/*.mdx` — posts with `title`, `slug`, `date`, `tags`, `summary`
-- [x] Create `/content/portfolio/*.mdx` — projects with `title`, `slug`, `date`, `description`, `cover`, `tags`
-- [x] Write 1–2 test blog posts and projects
+- [x] Create `/content/blog/*.md` — posts with `title`, `slug`, `date`, `tags`, `summary`
+- [x] Create `/content/projects/*.md` — projects with `title`, `slug`, `date`, `description`, `cover`, `tags`
+- [x] Write test blog posts and projects
+- [x] Fix filtering on projects page (client-side state)
+- [x] ~~Change from contentlayer to probably content collections?~~ → ✅ Done
+- [x] Connect dynamic data to portfolio and blog pages
+- [x] Connect search to blog and portfolio pages
 
-## 🎨 Data
+## 🎨 UI Components & Features
 
-- [ ] Fix filtering on blog and portfolio pages
-- [ ] Change from contentlayer to probably content collections?
-- [ ] Connect dynamic data to portfolio and blog pages
-- [ ] Connect search to blog and portfolio pages
+- [x] Create search overlay with keyboard navigation
+- [x] Implement fuzzy search for blog posts and projects
+- [x] Add category filtering for projects
+- [x] Add search and filtering for blog page
+- [x] Create working contact form with validation
+- [x] Add real social links (GitHub, LinkedIn, Email)
 
 ## ✍️ Blog/MDX Features
 
@@ -48,5 +54,4 @@
 - [ ] Add `prose` styling for blog/portfolio content
 - [ ] Enable dark mode toggle
 - [ ] Add OG image generation using `@vercel/og`
-- [ ] Add search/filter on blog or portfolio
 - [ ] Add social meta tags and share buttons
