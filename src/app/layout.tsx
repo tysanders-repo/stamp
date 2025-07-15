@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SideMenu from "../components/SideMenu";
 import MenuContent from "../components/MenuContent";
+import MobileMenuButton from "../components/MobileMenuButton";
+import { MobileMenuProvider } from "../components/MobileMenuContext";
 import "@radix-ui/themes/styles.css";
 import { Theme } from "@radix-ui/themes";
 
@@ -33,20 +35,23 @@ export default function RootLayout({
     className="bg-white"
     >
       <body 
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
       >
         <Theme appearance="light">
-        <main className="min-h-screen bg-white">
-          <div className="lg:flex">
-            <SideMenu>
-              <MenuContent />
-            </SideMenu>
-            <div className="flex flex-1 flex-row justify-center pt-16 lg:ml-80">
-              {children}
-            </div>
-          </div>
-        </main>
-      </Theme>
+          <MobileMenuProvider>
+            <main className="min-h-screen bg-white">
+              <MobileMenuButton />
+              <div className="lg:flex">
+                <SideMenu>
+                  <MenuContent />
+                </SideMenu>
+                <div className="flex flex-1 flex-row justify-center lg:ml-80">
+                  {children}
+                </div>
+              </div>
+            </main>
+          </MobileMenuProvider>
+        </Theme>
       </body>
     </html>
   );

@@ -1,7 +1,10 @@
+'use client'
+
 import React from 'react';
 import Link from 'next/link';
 import { Text } from '@radix-ui/themes';
 import { LINKS } from '@/lib/constants';
+import { useMobileMenu } from './MobileMenuContext';
 
 interface SideMenuProps {
   children?: React.ReactNode;
@@ -10,11 +13,36 @@ interface SideMenuProps {
 const SideMenu: React.FC<SideMenuProps> = ({ 
   children 
 }) => {
+  const { isOpen, close } = useMobileMenu();
+
   return (
-    <div className="fixed left-0 top-0 h-full w-80 bg-white border-r border-gray-200 shadow-lg z-50 p-6">
-      <div className="flex flex-col h-full">
-        {/* Header Section */}
-        <div className="mb-8">
+    <>
+      {/* Mobile overlay */}
+      {isOpen && (
+        <div 
+          className="lg:hidden fixed inset-0 bg-white bg-opacity-80 z-40"
+          onClick={close}
+        />
+      )}
+      
+            {/* Sidebar */}
+      <div className={`fixed left-0 top-0 h-full w-80 bg-white border-r border-gray-200 shadow-lg z-50 p-6 transition-transform duration-300 lg:translate-x-0 ${
+        isOpen ? 'translate-x-0' : '-translate-x-full'
+      }`}>
+        {/* Mobile Close Button */}
+        <button
+          onClick={close}
+          className="lg:hidden absolute top-4 right-4 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+          aria-label="Close menu"
+        >
+          <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        
+        <div className="flex flex-col h-full">
+          {/* Header Section */}
+          <div className="mb-8">
           <Link href="/" className="flex items-center gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
             {/* Logo */}
             <div className="flex-shrink-0">
@@ -71,6 +99,7 @@ const SideMenu: React.FC<SideMenuProps> = ({
         </div>
       </div>
     </div>
+    </>
   );
 };
 
