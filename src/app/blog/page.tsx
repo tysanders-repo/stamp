@@ -8,8 +8,8 @@ export default function BlogPage() {
   const posts = allPosts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
 
   return (
-    <div className="min-h-screen w-full flex justify-center items-start">
-      <div className="max-w-4xl px-6 py-12">
+    <div className="min-h-screen w-full flex justify-center">
+      <div className="max-w-4xl w-full px-6 py-12">
         {/* Header */}
         <div className="mb-12 flex flex-col gap-3">
           <Text size="8" weight="bold" className="text-gray-900 mb-4">
