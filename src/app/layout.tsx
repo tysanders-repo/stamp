@@ -7,8 +7,10 @@ import MobileMenuButton from "../components/MobileMenuButton";
 import { MobileMenuProvider } from "../components/MobileMenuContext";
 import { SearchProvider } from "../components/SearchContext";
 import SearchOverlay from "../components/SearchOverlay";
+import { ArrowLeft } from "lucide-react";
 import "@radix-ui/themes/styles.css";
 import { Theme } from "@radix-ui/themes";
+import BackButton from "../components/BackButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,7 +49,7 @@ export default function RootLayout({
                 <MobileMenuButton />
                 <div className="lg:flex">
                   <SideMenu>
-                    <MenuContent />
+                    {/* <MenuContent /> */}
                   </SideMenu>
                   <div className="flex flex-1 flex-row justify-center lg:ml-80">
                     {children}
