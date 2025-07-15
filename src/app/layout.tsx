@@ -7,6 +7,7 @@ import MobileMenuButton from "../components/MobileMenuButton";
 import { MobileMenuProvider } from "../components/MobileMenuContext";
 import "@radix-ui/themes/styles.css";
 import { Theme } from "@radix-ui/themes";
+import SearchOverlay from "../components/SearchOverlay";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +38,7 @@ export default function RootLayout({
       <body 
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
       >
+        <SearchOverlay isOpen={true} />
         <Theme appearance="light">
           <MobileMenuProvider>
             <main className="min-h-screen bg-white">
