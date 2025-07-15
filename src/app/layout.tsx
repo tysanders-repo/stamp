@@ -5,9 +5,10 @@ import SideMenu from "../components/SideMenu";
 import MenuContent from "../components/MenuContent";
 import MobileMenuButton from "../components/MobileMenuButton";
 import { MobileMenuProvider } from "../components/MobileMenuContext";
+import { SearchProvider } from "../components/SearchContext";
+import SearchOverlay from "../components/SearchOverlay";
 import "@radix-ui/themes/styles.css";
 import { Theme } from "@radix-ui/themes";
-import SearchOverlay from "../components/SearchOverlay";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,21 +39,23 @@ export default function RootLayout({
       <body 
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
       >
-        <SearchOverlay isOpen={true} />
         <Theme appearance="light">
-          <MobileMenuProvider>
-            <main className="min-h-screen bg-white">
-              <MobileMenuButton />
-              <div className="lg:flex">
-                <SideMenu>
-                  <MenuContent />
-                </SideMenu>
-                <div className="flex flex-1 flex-row justify-center lg:ml-80">
-                  {children}
+          <SearchProvider>
+            <SearchOverlay />
+            <MobileMenuProvider>
+              <main className="min-h-screen bg-white">
+                <MobileMenuButton />
+                <div className="lg:flex">
+                  <SideMenu>
+                    <MenuContent />
+                  </SideMenu>
+                  <div className="flex flex-1 flex-row justify-center lg:ml-80">
+                    {children}
+                  </div>
                 </div>
-              </div>
-            </main>
-          </MobileMenuProvider>
+              </main>
+            </MobileMenuProvider>
+          </SearchProvider>
         </Theme>
       </body>
     </html>

@@ -11,17 +11,16 @@
 
 ## 🧱 Content Models (Contentlayer)
 
-- [ ] Create `/content/blog/*.mdx` — posts with `title`, `slug`, `date`, `tags`, `summary`
-- [ ] Create `/content/portfolio/*.mdx` — projects with `title`, `slug`, `date`, `description`, `cover`, `tags`
-- [ ] Write 1–2 test blog posts and projects
+- [x] Create `/content/blog/*.mdx` — posts with `title`, `slug`, `date`, `tags`, `summary`
+- [x] Create `/content/portfolio/*.mdx` — projects with `title`, `slug`, `date`, `description`, `cover`, `tags`
+- [x] Write 1–2 test blog posts and projects
 
-## 🎨 Styling & Layout
+## 🎨 Data
 
-- [ ] Set up global Tailwind config and base layout (`app/layout.tsx`)
-- [ ] Create a responsive navbar and footer
-- [ ] Implement `/blog` index page (post grid or list view)
-- [ ] Implement `/portfolio` index page (Notion-style grid with image + title + description cards)
-- [ ] Create `[slug]` dynamic routes for blog posts and portfolio pages
+- [ ] Fix filtering on blog and portfolio pages
+- [ ] Change from contentlayer to probably content collections?
+- [ ] Connect dynamic data to portfolio and blog pages
+- [ ] Connect search to blog and portfolio pages
 
 ## ✍️ Blog/MDX Features
 

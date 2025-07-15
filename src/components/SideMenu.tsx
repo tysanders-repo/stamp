@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { Text } from '@radix-ui/themes';
 import { LINKS } from '@/lib/constants';
 import { useMobileMenu } from './MobileMenuContext';
+import { useSearch } from './SearchContext';
+import { Search, Square } from 'lucide-react';
 
 interface SideMenuProps {
   children?: React.ReactNode;
@@ -14,6 +16,7 @@ const SideMenu: React.FC<SideMenuProps> = ({
   children 
 }) => {
   const { isOpen, close } = useMobileMenu();
+  const { openSearch } = useSearch();
 
   return (
     <>
@@ -67,11 +70,14 @@ const SideMenu: React.FC<SideMenuProps> = ({
             <input 
               type="text" 
               placeholder="Search..." 
-              className="w-full px-4 py-3 pl-10 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+              className="w-full px-4 py-3 pl-10 pr-12 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 cursor-pointer"
+              onClick={openSearch}
+              readOnly
             />
-            <svg className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-1">
+              <span className="text-xs text-gray-400 font-mono">/</span>
+            </div>
           </div>
         </div>
 

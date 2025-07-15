@@ -2,10 +2,14 @@ import React from 'react';
 import Link from 'next/link';
 import { Text } from '@radix-ui/themes';
 import { compareDesc, format, parseISO } from 'date-fns'
-import { allPosts, Post } from 'contentlayer/generated'
+import { getBlogPosts } from '@/lib/content'
 
-export default function BlogPage() {
-  const posts = allPosts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
+export default async function BlogPage() {
+  const posts = getBlogPosts().sort((a, b) => {
+    const dateA = typeof a.date === 'string' ? parseISO(a.date) : new Date(a.date)
+    const dateB = typeof b.date === 'string' ? parseISO(b.date) : new Date(b.date)
+    return compareDesc(dateA, dateB)
+  })
 
   return (
     <div className="min-h-screen w-full flex justify-center">
@@ -44,37 +48,40 @@ export default function BlogPage() {
 
         {/* Blog Posts Grid */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {posts.map((post) => (
-            <article key={post._id} className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
-              <div className="p-6">
-                <div className="mb-3">
-                  <Text size="1" className="text-gray-500 uppercase tracking-wide">
-                    {format(new Date(post.date), 'MMMM d, yyyy')}
+          {posts.map((post) => {
+            const postDate = typeof post.date === 'string' ? parseISO(post.date) : new Date(post.date)
+            return (
+              <article key={post.slug} className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                <div className="p-6">
+                  <div className="mb-3">
+                    <Text size="1" className="text-gray-500 uppercase tracking-wide">
+                      {format(postDate, 'MMMM d, yyyy')}
+                    </Text>
+                  </div>
+                  
+                  <Link href={`/blog/${post.slug}`} className="block group">
+                    <Text size="5" weight="bold" className="text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
+                      {post.title}
+                    </Text>
+                  </Link>
+                  
+                  <Text size="3" className="text-gray-600 mb-4 line-clamp-3">
+                    {post.excerpt || post.content.slice(0, 150)}...
                   </Text>
+                  
+                  <Link 
+                    href={`/blog/${post.slug}`}
+                    className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200"
+                  >
+                    Read more
+                    <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
                 </div>
-                
-                <Link href={post.url} className="block group">
-                  <Text size="5" weight="bold" className="text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
-                    {post.title}
-                  </Text>
-                </Link>
-                
-                <Text size="3" className="text-gray-600 mb-4 line-clamp-3">
-                  {post.body.raw.slice(0, 150)}...
-                </Text>
-                
-                <Link 
-                  href={post.url}
-                  className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200"
-                >
-                  Read more
-                  <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </div>
-            </article>
-          ))}
+              </article>
+            )
+          })}
         </div>
 
         {/* Pagination */}
