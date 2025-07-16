@@ -21,7 +21,7 @@ export interface Project {
   image?: string
 }
 
-export const blogPosts: BlogPost[] = allBlogs.map(post => ({
+export const blogPosts: BlogPost[] = allBlogs.map((post) => ({
   slug: post._meta.path,
   title: post.title,
   date: post.date,
@@ -30,7 +30,7 @@ export const blogPosts: BlogPost[] = allBlogs.map(post => ({
   category: post.category,
 }));
 
-export const projects: Project[] = allProjects.map(project => ({
+export const projects: Project[] = allProjects.map((project) => ({
   slug: project._meta.path,
   title: project.title,
   date: project.date,

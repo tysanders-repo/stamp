@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Text } from '@radix-ui/themes';
 import Link from 'next/link';
-import { Project } from '@/lib/content';
+import { Project } from '@/lib/search-data';
 
 const allCategories = ['Hardware', 'Software', 'AI/ML', 'DevOps'];
 
@@ -25,18 +25,18 @@ export function ProjectFilter({ projects }: ProjectFilterProps) {
   // Filter projects based on selected categories
   const filteredProjects = selectedCategories.length === 0 
     ? projects
-    : projects.filter(project => selectedCategories.includes(project.category));
+    : projects.filter((project: Project) => selectedCategories.includes(project.category));
 
   // Separate featured and non-featured projects
-  const featuredProjects = filteredProjects.filter(p => p.featured);
-  const regularProjects = filteredProjects.filter(p => !p.featured);
+  const featuredProjects = filteredProjects.filter((p: Project) => p.featured);
+  const regularProjects = filteredProjects.filter((p: Project) => !p.featured);
 
   return (
     <>
       {/* Category Filter */}
       <div className="mb-12">
         <div className="flex flex-wrap gap-3">
-          {allCategories.map((category) => {
+          {allCategories.map((category: string) => {
             const isActive = selectedCategories.includes(category);
             
             return (
@@ -63,7 +63,7 @@ export function ProjectFilter({ projects }: ProjectFilterProps) {
             Featured Projects
           </Text>
           <div className="grid gap-8 md:grid-cols-2">
-            {featuredProjects.map((project) => (
+            {featuredProjects.map((project: Project) => (
               <Link href={`/projects/${project.slug}`} key={project.slug} className="block group"> 
                 <article className="group cursor-pointer">
                   <div className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300">
@@ -96,7 +96,7 @@ export function ProjectFilter({ projects }: ProjectFilterProps) {
 
                       {/* Tags */}
                       <div className="flex flex-wrap gap-2">
-                        {project.tags.map((tag) => (
+                        {project.tags.map((tag: string) => (
                           <span
                             key={tag}
                             className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-md"
@@ -123,7 +123,7 @@ export function ProjectFilter({ projects }: ProjectFilterProps) {
           }
         </Text>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {regularProjects.map((project) => (
+          {regularProjects.map((project: Project) => (
             <Link href={`/projects/${project.slug}`} key={project.slug} className="block group">
               <article className="group cursor-pointer">
                 <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-all duration-300">

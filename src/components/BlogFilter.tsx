@@ -4,7 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { Text } from '@radix-ui/themes';
 import Link from 'next/link';
 import { format, parseISO } from 'date-fns';
-import { BlogPost } from '@/lib/content';
+import { BlogPost } from '@/lib/search-data';
 
 interface BlogFilterProps {
   posts: BlogPost[];
@@ -16,7 +16,7 @@ export function BlogFilter({ posts }: BlogFilterProps) {
 
   // Get unique categories from posts
   const categories = useMemo(() => {
-    const cats = posts.map(post => post.category).filter(Boolean);
+    const cats = posts.map((post: BlogPost) => post.category).filter(Boolean);
     return Array.from(new Set(cats));
   }, [posts]);
 
@@ -26,17 +26,16 @@ export function BlogFilter({ posts }: BlogFilterProps) {
 
     // Filter by category
     if (selectedCategory) {
-      filtered = filtered.filter(post => post.category === selectedCategory);
+      filtered = filtered.filter((post: BlogPost) => post.category === selectedCategory);
     }
 
     // Filter by search query
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
-      filtered = filtered.filter(post => 
+      filtered = filtered.filter((post: BlogPost) => 
         post.title.toLowerCase().includes(query) ||
         post.excerpt?.toLowerCase().includes(query) ||
-        post.content.toLowerCase().includes(query) ||
-        post.tags?.some(tag => tag.toLowerCase().includes(query))
+        post.tags?.some((tag: string) => tag.toLowerCase().includes(query))
       );
     }
 
@@ -66,7 +65,7 @@ export function BlogFilter({ posts }: BlogFilterProps) {
             className="px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="">All Categories</option>
-            {categories.map((category) => (
+            {categories.map((category: string | undefined) => (
               <option key={category} value={category}>
                 {category}
               </option>
@@ -87,7 +86,7 @@ export function BlogFilter({ posts }: BlogFilterProps) {
       {/* Blog Posts Grid */}
       {filteredPosts.length > 0 ? (
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {filteredPosts.map((post) => {
+          {filteredPosts.map((post: BlogPost) => {
             const postDate = typeof post.date === 'string' ? parseISO(post.date) : new Date(post.date)
             return (
               <article key={post.slug} className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
@@ -105,13 +104,13 @@ export function BlogFilter({ posts }: BlogFilterProps) {
                   </Link>
                   
                   <Text size="3" className="text-gray-600 mb-4 line-clamp-3">
-                    {post.excerpt || post.content.slice(0, 150)}...
+                    {post.excerpt || 'No excerpt available'}...
                   </Text>
                   
                   {/* Tags */}
                   {post.tags && post.tags.length > 0 && (
                     <div className="mb-4 flex flex-wrap gap-2">
-                      {post.tags.map((tag) => (
+                      {post.tags.map((tag: string) => (
                         <span
                           key={tag}
                           className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-md"

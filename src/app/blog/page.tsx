@@ -6,7 +6,7 @@ import { BlogFilter } from '@/components/BlogFilter';
 
 export default function BlogPage() {
   const posts = allBlogs
-    .map(post => ({ ...post, slug: post._meta.path }))
+    .map((post) => ({ ...post, slug: post._meta.path }))
     .sort((a, b) => {
       const dateA = typeof a.date === 'string' ? parseISO(a.date) : new Date(a.date)
       const dateB = typeof b.date === 'string' ? parseISO(b.date) : new Date(b.date)
