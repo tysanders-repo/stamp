@@ -7,7 +7,6 @@ import fuzzysort from "fuzzysort";
 import { Search, X, ChevronRight } from "lucide-react";
 import { useSearch } from "./SearchContext";
 import { blogPosts, projects } from "@/lib/search-data";
-import { trackUserAction } from "@/lib/datadog";
 
 interface SearchResult {
   item: {
@@ -84,14 +83,6 @@ const SearchOverlay = () => {
 
   // Handle navigation to selected item
   const handleSelectItem = useCallback((result: SearchResult) => {
-    // Track search result selection
-    trackUserAction('search_result_selected', {
-      type: result.type,
-      slug: result.item.slug,
-      query: searchQuery,
-      resultIndex: selectedIndex
-    });
-
     if (result.type === 'project') {
       // Navigate to project page
       window.location.href = `/projects/${result.item.slug}`;
@@ -108,12 +99,10 @@ const SearchOverlay = () => {
 
       if (e.key === "/") {
         e.preventDefault();
-        trackUserAction('search_opened', { method: 'keyboard' });
         openSearch();
       }
 
       if (e.key === "Escape" && isSearchOpen) {
-        trackUserAction('search_closed', { method: 'keyboard' });
         closeSearch();
         setSearchQuery("");
         setSelectedIndex(0);
@@ -123,16 +112,6 @@ const SearchOverlay = () => {
     window.addEventListener("keydown", keyPressEvent);
     return () => window.removeEventListener("keydown", keyPressEvent);
   }, [isSearchOpen, closeSearch, openSearch]);
-
-  // Track search query changes
-  useEffect(() => {
-    if (searchQuery.trim()) {
-      trackUserAction('search_query_entered', {
-        query: searchQuery,
-        resultsCount: totalResults
-      });
-    }
-  }, [searchQuery, totalResults]);
 
   // Keyboard navigation
   useEffect(() => {
