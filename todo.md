@@ -35,6 +35,11 @@
 - [ ] Add support for images in MDX (`next/image` override)
 - [ ] Optional: Add Mermaid diagram support (`rehype-mermaid` or `<Mermaid />` component)
 
+## 🎨 Branding & Assets
+- [x] add actual icon instead of tmp logo
+- [x] add favicon
+- [x] change metadata
+
 ## ⚙️ Observability & Analytics
 
 - [ ] Install and configure **Datadog RUM** for frontend session tracking
