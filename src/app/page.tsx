@@ -1,4 +1,4 @@
-import { Text, Heading, Card, Flex, Badge } from "@radix-ui/themes";
+import { Text, Heading, Card, Badge } from "@radix-ui/themes";
 import { GitHubLogoIcon, LinkedInLogoIcon, EnvelopeClosedIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 

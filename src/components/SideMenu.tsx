@@ -7,7 +7,7 @@ import { Text } from '@radix-ui/themes';
 import { LINKS } from '@/lib/constants';
 import { useMobileMenu } from './MobileMenuContext';
 import { useSearch } from './SearchContext';
-import { Search, Square } from 'lucide-react';
+import { Search } from 'lucide-react';
 
 interface SideMenuProps {
   children?: React.ReactNode;

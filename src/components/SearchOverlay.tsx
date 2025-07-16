@@ -1,20 +1,29 @@
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import fuzzysort from "fuzzysort";
 import { Search, X, ChevronRight } from "lucide-react";
 import { useSearch } from "./SearchContext";
-import { blogPosts, projects, type BlogPost, type Project } from "@/lib/search-data";
+import { blogPosts, projects } from "@/lib/search-data";
 
 interface SearchResult {
-  item: any;
+  item: {
+    slug: string;
+    title: string;
+    description?: string;
+    excerpt?: string;
+    tags?: string[];
+    category?: string;
+    year?: string;
+    date?: string;
+  };
   score: number;
   type: 'project' | 'blog';
 }
 
-const SearchOverlay = ({ children }: { children?: React.ReactNode }) => {
+const SearchOverlay = () => {
   const { isSearchOpen, openSearch, closeSearch } = useSearch();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -73,7 +82,7 @@ const SearchOverlay = ({ children }: { children?: React.ReactNode }) => {
   }, [searchResults]);
 
   // Handle navigation to selected item
-  const handleSelectItem = (result: SearchResult) => {
+  const handleSelectItem = useCallback((result: SearchResult) => {
     if (result.type === 'project') {
       // Navigate to project page
       window.location.href = `/projects/${result.item.slug}`;
@@ -82,7 +91,7 @@ const SearchOverlay = ({ children }: { children?: React.ReactNode }) => {
       window.location.href = `/blog/${result.item.slug}`;
     }
     closeSearch();
-  };
+  }, [closeSearch]);
 
   useEffect(() => {
     const keyPressEvent = (e: KeyboardEvent) => {
@@ -125,7 +134,7 @@ const SearchOverlay = ({ children }: { children?: React.ReactNode }) => {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isSearchOpen, totalResults, selectedIndex, allResults]);
+  }, [isSearchOpen, totalResults, selectedIndex, allResults, handleSelectItem]);
 
   return (
     <Dialog.Root open={isSearchOpen} onOpenChange={closeSearch}>
@@ -168,7 +177,7 @@ const SearchOverlay = ({ children }: { children?: React.ReactNode }) => {
                   <div>
                     <h3 className="text-sm font-semibold text-gray-900 mb-3">Projects</h3>
                     <div className="space-y-2">
-                      {searchResults.projects.map((result, index) => {
+                      {searchResults.projects.map((result) => {
                         const globalIndex = allResults.findIndex(r => r.item.slug === result.item.slug && r.type === 'project');
                         return (
                           <div
@@ -204,7 +213,7 @@ const SearchOverlay = ({ children }: { children?: React.ReactNode }) => {
                   <div>
                     <h3 className="text-sm font-semibold text-gray-900 mb-3">Blog Posts</h3>
                     <div className="space-y-2">
-                      {searchResults.blogs.map((result, index) => {
+                      {searchResults.blogs.map((result) => {
                         const globalIndex = allResults.findIndex(r => r.item.slug === result.item.slug && r.type === 'blog');
                         return (
                           <div

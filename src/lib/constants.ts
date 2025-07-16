@@ -1,14 +1,4 @@
-import { Home, User, FileText, BookOpen, Mail } from 'lucide-react';
-
-interface LINK {
-  title: string;
-  href: string;
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-  external?: boolean;
-  disabled?: boolean;
-  badge?: string | number;
-}
-
+import { Home, FileText, BookOpen, Mail } from 'lucide-react';
 
 export const LINKS = {
   home: {

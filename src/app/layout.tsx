@@ -6,7 +6,7 @@ import MobileMenuButton from "../components/MobileMenuButton";
 import { MobileMenuProvider } from "../components/MobileMenuContext";
 import { SearchProvider } from "../components/SearchContext";
 import SearchOverlay from "../components/SearchOverlay";
-import { ArrowLeft } from "lucide-react";
+
 import "@radix-ui/themes/styles.css";
 import { Theme } from "@radix-ui/themes";
 
