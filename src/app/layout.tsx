@@ -21,6 +21,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://tysanders.xyz'),
   title: "Tristian 'Ty' Sanders",
   description: "Personal portfolio and blog of Tristian Sanders, a Computer Engineer",
   keywords: ["computer engineer", "software development", "portfolio", "blog", "technology", "devblog"],
@@ -28,13 +29,14 @@ export const metadata: Metadata = {
   creator: "Tristian Sanders",
   openGraph: {
     title: "Tristian 'Ty' Sanders - Computer Engineer",
-    description: "Personal portfolio and blog of Tristian Sanders, a Computer Engineer passionate about technology and innovation.",
+    description: "Personal portfolio and blog of Tristian Sanders, a Computer Engineer.",
     type: "website",
     images: [
       {
-        url: "/api/og?title=Tristian%20'Ty'%20Sanders%20-%20Computer%20Engineer&description=Personal%20portfolio%20and%20blog%20of%20Tristian%20Sanders.",
+        url: "/og_image.png",
         width: 1200,
         height: 630,
+        alt: "Tristian 'Ty' Sanders - Computer Engineer",
       },
     ],
   },
