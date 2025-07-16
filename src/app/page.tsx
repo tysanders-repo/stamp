@@ -67,7 +67,7 @@ export default function Home() {
                 <Text size="3" className="text-gray-600 leading-relaxed">
                   When I'm not coding, I put my electrical engineering side to use in designing super small low-energy PCBs 
                   (4-layer with SoC, signal demands, used UWB).
-                  I'm a classically trained cellist and a barely trained pianist. I enjoy cooking, especially savory meals, and i'm Currently working through Kenji Lopez-Alt's 
+                  I'm a classically trained cellist and a barely trained pianist. I enjoy cooking, especially savory meals, and I'm currently working through Kenji Lopez-Alt's 
                   excellent cookbook <em>The Food Lab</em> in my free time.
                 </Text>
               </div>
