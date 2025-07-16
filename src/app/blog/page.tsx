@@ -1,15 +1,17 @@
 import React from 'react';
 import { Text } from '@radix-ui/themes';
 import { compareDesc, parseISO } from 'date-fns'
-import { getBlogPosts } from '@/lib/content'
+import { allBlogs } from 'content-collections';
 import { BlogFilter } from '@/components/BlogFilter';
 
-export default async function BlogPage() {
-  const posts = getBlogPosts().sort((a, b) => {
-    const dateA = typeof a.date === 'string' ? parseISO(a.date) : new Date(a.date)
-    const dateB = typeof b.date === 'string' ? parseISO(b.date) : new Date(b.date)
-    return compareDesc(dateA, dateB)
-  })
+export default function BlogPage() {
+  const posts = allBlogs
+    .map(post => ({ ...post, slug: post._meta.path }))
+    .sort((a, b) => {
+      const dateA = typeof a.date === 'string' ? parseISO(a.date) : new Date(a.date)
+      const dateB = typeof b.date === 'string' ? parseISO(b.date) : new Date(b.date)
+      return compareDesc(dateA, dateB)
+    })
 
   return (
     <div className="min-h-screen w-full flex justify-center">

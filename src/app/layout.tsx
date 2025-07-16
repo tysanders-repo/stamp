@@ -30,6 +30,13 @@ export const metadata: Metadata = {
     title: "Tristian 'Ty' Sanders - Computer Engineer",
     description: "Personal portfolio and blog of Tristian Sanders, a Computer Engineer passionate about technology and innovation.",
     type: "website",
+    images: [
+      {
+        url: "/api/og?title=Tristian%20'Ty'%20Sanders%20-%20Computer%20Engineer&description=Personal%20portfolio%20and%20blog%20of%20Tristian%20Sanders.",
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",

@@ -1,24 +1,23 @@
 
 import { format, parseISO } from 'date-fns'
-import { getProject, getProjects } from '@/lib/content'
+import { allProjects } from 'content-collections'
 import { notFound } from 'next/navigation'
 import Markdown from "react-markdown";
 
 export const generateStaticParams = async () => {
-  const posts = getProjects()
-  return posts.map((post) => ({ slug: post.slug }))
+  return allProjects.map((project) => ({ slug: project._meta.path }))
 }
 
 export const generateMetadata = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params
-  const post = getProject(slug)
+  const post = allProjects.find((p) => p._meta.path === slug)
   if (!post) return { title: 'Post not found' }
   return { title: post.title }
 }
 
 const PostLayout = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params
-  const post = getProject(slug)
+  const post = allProjects.find((p) => p._meta.path === slug)
   if (!post) notFound()
 
   // Handle date properly - it's already a string

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Text } from '@radix-ui/themes';
-import { getProjects } from '@/lib/content';
+import { allProjects } from 'content-collections';
 import { ProjectFilter } from '@/components/ProjectFilter';
 
 export default function ProjectsPage() {
-  const projects = getProjects();
+  const projects = allProjects.map(project => ({ ...project, slug: project._meta.path }));
 
   return (
     <div className="min-h-screen w-full flex justify-center items-start">
