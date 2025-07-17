@@ -31,7 +31,7 @@ const PostLayout = async ({ params }: { params: Promise<{ slug: string }> }) => 
         </time>
         <h1 className="text-3xl font-bold">{post.title}</h1>
       </div>
-      <div className="[&>*]:mb-3 [&>*:last-child]:mb-0 prose prose-gray max-w-none">
+      <div className="[&>*]:mb-3 [&>*:last-child]:mb-0 content-container max-w-none">
         <Markdown>{post.content}</Markdown>
       </div>
     </article>
