@@ -10,8 +10,9 @@ Today's problem: 3201. Find the Maximum Length of Valid Subsequence I
 
 We are given a integer array `nums`, and we want to find the maximum length of a subsequence `sub` with length `x` that satisfies the following conditions:
 
-
-`(sub[0] + sub[1]) % 2 == (sub[1] + sub[2]) % 2 == ... == (sub[x - 2] + sub[x - 1]) % 2`
+```
+(sub[0] + sub[1]) % 2 == (sub[1] + sub[2]) % 2 == ... == (sub[x - 2] + sub[x - 1]) % 2
+```
 
 essentially, we want to find the longest subsequence where the sum of consecutive elements is either all even or all odd (0 or 1). We notice a pattern here:
 
