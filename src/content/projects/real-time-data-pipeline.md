@@ -1,5 +1,5 @@
 ---
-title: "Real-Time Data Processing Pipeline"
+title: "Real Time Data Processing Pipeline"
 date: 2024-03-20
 description: "Built a scalable data processing system that handles millions of events per second with sub-millisecond latency."
 category: "Software"

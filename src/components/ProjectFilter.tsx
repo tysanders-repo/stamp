@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Text } from '@radix-ui/themes';
 import Link from 'next/link';
 import { Project } from '@/lib/search-data';
+import { getProjectImageUrl } from '@/lib/utils';
 
 const allCategories = ['Hardware', 'Software', 'AI/ML', 'DevOps'];
 
@@ -69,7 +70,17 @@ export function ProjectFilter({ projects }: ProjectFilterProps) {
                   <div className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300">
                     {/* Project Image */}
                     <div className="aspect-video bg-gray-100 relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center">
+                      <img
+                        src={getProjectImageUrl(project.title)}
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          target.nextElementSibling?.classList.remove('hidden');
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center hidden">
                         <Text size="3" className="text-gray-500">Project Image</Text>
                       </div>
                     </div>
@@ -129,7 +140,17 @@ export function ProjectFilter({ projects }: ProjectFilterProps) {
                 <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-all duration-300">
                   {/* Project Image */}
                   <div className="aspect-video bg-gray-100 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+                    <img
+                      src={getProjectImageUrl(project.title)}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        target.nextElementSibling?.classList.remove('hidden');
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center hidden">
                       <Text size="2" className="text-gray-400">Project Image</Text>
                     </div>
                   </div>

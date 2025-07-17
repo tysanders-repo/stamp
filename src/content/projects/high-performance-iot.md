@@ -1,9 +1,9 @@
 ---
-title: "High-Performance IoT System"
+title: "High Performance Video Chat"
 date: 2024-01-15
-description: "A low-power 4-layer PCB design with SoC integration and UWB signal processing for IoT applications."
-category: "Hardware"
-tags: ["PCB Design", "IoT", "UWB", "Low-Power"]
+description: "A high-performance video chat system built with WebRTC and WebSocket for real-time communication."
+category: "Software"
+tags: ["WebRTC", "WebSocket", "Real-Time", "Performance"]
 featured: true
 year: "2024"
 ---
