@@ -40,7 +40,8 @@ const PostLayout = async ({ params }: { params: Promise<{ slug: string }> }) => 
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
         components={{
-          async code({ node, inline, className, children, ...props }: any) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          async code({ inline, className, children, ...props }: any) {
             const match = /language-(\w+)/.exec(className || '');
             const language = match ? match[1] : 'plaintext';
             return !inline && match ? (
