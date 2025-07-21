@@ -2,7 +2,7 @@
 title: "High Performance Video Chat"
 date: 2024-03-20
 description: "A high-performance local network video chat system built off of raw UDP sockets and FFMPEG."
-category: "Hardware"
+category: "Software"
 tags: ["System Design", "Real-Time", "Performance", "FFMPEG", "Socket Programming"]
 featured: true
 year: "2025"
