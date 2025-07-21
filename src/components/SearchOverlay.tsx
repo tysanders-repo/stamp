@@ -1,5 +1,6 @@
 "use client";
 
+import React from 'react';
 import * as Dialog from "@radix-ui/react-dialog";
 import { useEffect, useState, useMemo, useCallback } from "react";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
@@ -135,6 +136,9 @@ const SearchOverlay = () => {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isSearchOpen, totalResults, selectedIndex, allResults, handleSelectItem]);
+
+  // Don't render anything if search is not open
+  if (!isSearchOpen) return null;
 
   return (
     <Dialog.Root open={isSearchOpen} onOpenChange={closeSearch}>

@@ -5,7 +5,7 @@ import SideMenu from "../components/SideMenu";
 import MobileMenuButton from "../components/MobileMenuButton";
 import { MobileMenuProvider } from "../components/MobileMenuContext";
 import { SearchProvider } from "../components/SearchContext";
-import SearchOverlay from "../components/SearchOverlay";
+import LazySearchOverlay from "../components/LazySearchOverlay";
 
 import "@radix-ui/themes/styles.css";
 import { Theme } from "@radix-ui/themes";
@@ -63,7 +63,7 @@ export default function RootLayout({
       >
         <Theme appearance="light">
           <SearchProvider>
-            <SearchOverlay />
+            <LazySearchOverlay />
             <MobileMenuProvider>
               <main className="min-h-screen bg-white">
                 <MobileMenuButton />
