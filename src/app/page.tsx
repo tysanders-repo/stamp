@@ -65,9 +65,9 @@ export default function Home() {
                  About Me
                 </Heading>
                 <Text size="3" className="text-gray-600 leading-relaxed">
-                  When I'm not coding, I put my electrical engineering side to use in designing super small low-energy PCBs 
-                  (4-layer with SoC, signal demands, used UWB).
-                  I'm a classically trained cellist and a barely trained pianist. I enjoy cooking, especially savory meals, and I'm currently working through Kenji Lopez-Alt's 
+                  I believe the best systems should feel invisible. They are intutive, unintrusive, and seamless with everyday life.
+                  When I'm not coding, I put my electrical engineering side to use in designing super small low-energy PCBs.
+                  I'm a classically trained cellist and a barely trained pianist. I enjoy cooking, especially meals, and I'm currently working through Kenji Lopez-Alt's 
                   excellent cookbook <em>The Food Lab</em> in my free time.
                 </Text>
               </div>
