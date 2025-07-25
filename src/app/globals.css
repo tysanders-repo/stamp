@@ -30,6 +30,17 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Text selection/highlight color */
+/* ::selection {
+  background-color: #172d3f !important;
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background-color: #172d3f !important;
+  color: #ffffff;
+} */
+
 .content-container {
   /* Content styling for markdown and headings */
 }
