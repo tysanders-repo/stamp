@@ -92,7 +92,7 @@ const SearchOverlay = () => {
       window.location.href = `/blog/${result.item.slug}`;
     }
     closeSearch();
-  }, [closeSearch]);
+  }, [closeSearch, searchQuery, selectedIndex]);
 
   useEffect(() => {
     const keyPressEvent = (e: KeyboardEvent) => {

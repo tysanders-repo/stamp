@@ -6,6 +6,7 @@ import MobileMenuButton from "../components/MobileMenuButton";
 import { MobileMenuProvider } from "../components/MobileMenuContext";
 import { SearchProvider } from "../components/SearchContext";
 import LazySearchOverlay from "../components/LazySearchOverlay";
+import DatadogInit from "../lib/datadog";
 
 import "@radix-ui/themes/styles.css";
 import { Theme } from "@radix-ui/themes";
@@ -62,6 +63,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
       >
         <Theme appearance="light">
+          <DatadogInit />
           <SearchProvider>
             <LazySearchOverlay />
             <MobileMenuProvider>
