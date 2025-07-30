@@ -47,7 +47,11 @@ const SideMenu: React.FC<SideMenuProps> = ({
         <div className="flex flex-col h-full">
           {/* Header Section */}
           <div className="mb-8">
-          <Link href="/" className="flex items-center gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+          <Link 
+            href="/" 
+            className="flex items-center gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+            onClick={close}
+          >
             <Image src="/me.webp" alt="Tristian 'Ty' Sanders" width={48} height={48} className="rounded-full" />
             <div className="flex flex-col">
               <Text weight="bold" className="text-lg text-gray-900">Tristian <em>'Ty'</em> Sanders</Text>
@@ -81,6 +85,7 @@ const SideMenu: React.FC<SideMenuProps> = ({
                 href={link.href} 
                 key={link.title} 
                 className="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200 group"
+                onClick={close}
               >
                 <div className="flex-shrink-0 w-5 h-5 text-gray-500 group-hover:text-gray-700 transition-colors duration-200 flex items-center justify-center">
                   <link.icon size={20} />
