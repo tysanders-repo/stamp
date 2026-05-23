@@ -37,17 +37,17 @@ However no market solutions exist for this technology. What we did find was some
 
 Our design started by laying out all our requirments. Similar to how we would build software, we laid out user stories and built specific features with those in mind. Slowly the device began to take shape.
 
-<p align="center">
+<figure>
   <img src="/projects/smart-watch-1.png" width="400" />
-  <em>A basic idea forms</em>
-</p>
+  <figcaption>A basic idea forms</figcaption>
+</figure>
 
 Building the design first takes place in schematics. We opted to use kicad due to its lower barrier of entry and crossplatform support. If we had longer than a semseter I believe altium would have been an equally good choice. We seperated into pairs in order to design the power, haptics, communication, and the interconnections via the SoC (system on a chip)
 
-<p align="center">
+<figure>
   <img src="/projects/smart-watch-2.png" width="500" />
-  <em>power management section</em>
-</p>
+  <figcaption>power management section</figcaption>
+</figure>
 
 #### PCB Design
 
@@ -56,11 +56,11 @@ Converting the schematics to a 40x40mm pcb was a difficult task. As the only one
 <div class="image-row">
   <figure>
     <img src="/projects/smart-watch.png" alt="PCB layout" />
-    <figcaption><em>PCB layout</em></figcaption>
+    <figcaption>PCB layout</figcaption>
   </figure>
   <figure>
     <img src="/projects/smart-watch-4.png" alt="PCB layout 3D" />
-    <figcaption><em>PCB layout 3D</em></figcaption>
+    <figcaption>PCB layout 3D</figcaption>
   </figure>
 </div>
 
@@ -70,10 +70,10 @@ Since we had so many components, we had unforentuely ran into circumstances wher
 
 Since the assembled boards arrived too late, we were forced to hand assemble one of our own. I had soldered before, but this was microsoldering due to our size constraints. Most of our components were barely visible, let alone easily soldered. This was also the first time I had tried to do chip pad soldering. The entire assembly process took me around three weeks just working around my schedule.
 
-<p align="center">
+<figure>
   <img src="/projects/smart-watch-3.jpg" width="400" />
-  <em>A finished board</em>
-</p>
+  <figcaption>A finished board</figcaption>
+</figure>
 
 
 #### Running into issues and lessons learned
