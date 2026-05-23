@@ -53,10 +53,16 @@ Building the design first takes place in schematics. We opted to use kicad due t
 
 Converting the schematics to a 40x40mm pcb was a difficult task. As the only one with any experience in this field I did this singlehandedly over around a month. Our board ended up being over 100 components, across a four layer board. PCB design involves routing each trace--the thin copper wires embedded in the board--and placing components in logical, low interference positions.
 
-<p align="center">
-  <img src="/projects/smart-watch.png" width="400" />
-  <em>PCB layout</em>
-</p>
+<div class="image-row">
+  <figure>
+    <img src="/projects/smart-watch.png" alt="PCB layout" />
+    <figcaption><em>PCB layout</em></figcaption>
+  </figure>
+  <figure>
+    <img src="/projects/smart-watch-4.png" alt="PCB layout 3D" />
+    <figcaption><em>PCB layout 3D</em></figcaption>
+  </figure>
+</div>
 
 We were able to order the pcbs and the components pretty quickly after the completition of the pcb layout. What we didn't expect was the amount of time it would take to receive them. JLCPCB handled our plain PCB fabrication. The total process to recive the boards took around two weeks (incl. shipping). We ordered assemebled boards from PCBway at the same time and those took over a month. By the time they actually came in, it was the day of our final showcase and we were unable to use them. This wasn't the fault of the fabricators but rather our first and most major mistake.
 

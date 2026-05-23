@@ -156,3 +156,31 @@ body {
 .content-container em {
   font-style: italic;
 }
+
+.content-container .image-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 1.5rem 0;
+}
+
+.content-container .image-row figure {
+  margin: 0;
+  text-align: center;
+  flex: 1 1 240px;
+  max-width: calc(50% - 0.75rem);
+}
+
+.content-container .image-row img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.content-container .image-row figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
