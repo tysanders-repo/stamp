@@ -21,15 +21,13 @@ Our professor, a seasoned veteran of teaching capstone courses, impressed upon u
 - Labo-labs style circuit learning tool
 - Trash cleaning robot
 
-I ended up joining a team that was building a device that would allow users to track their friends.
-
 #### Research
 
-The first step to any project is research. Reading though material helps us get a sense of what is possible, what already exists, and what our options are. At this point in the project, we only have the vaugest idea of what our product would look like, so reading material helps to build a basic intution of what's possible.
+The first step to any project is research. Reading though material helps us get a sense of what is possible, what already exists, and what our options are. At this point in the project, we only have the vaugest idea of what our product would look like, so reading material helps to develop a basic intution of what's possible.
 
-We would meet several times over the next few weeks as we began to hone in on what our project would look like. Since our professor set strict requirments on the novelty of our approach, we couldn't just use GPS like many (all) similar systems do. In our hunt however, we read about a technology called UWB (ultrawide band) that was used in devices like the iphone and airtag. Looking into it more, we found research where UWB was used to position moving drones and even to guide docking manuevers in space. UWB, it seemed, would be our ticket to accurately position users relative to each other.
+We would meet several times over the next few weeks as we began to hone in on what our project would look like. Since our professor set strict requirments on the novelty of our approach, we couldn't just use GPS like many (all) similar systems do. In our hunt however, we read about a technology called UWB (ultrawide band) that was used in devices like the iphone and airtag. Looking into it more, we found research where UWB was used to position moving drones and even to guide docking manuevers in space. UWB, it seemed, would be our ticket to accurately position users relative to each other. UWB is chosen for its unique benefits. The wide bandwidth allows for very accurate and percise time of flight measurements. Additionally, short pulses allow for better multipath rejection (the ability to ignore reflected signals) which is a common issue in indoor environments.
 
-However there was a downside. Typical systems that take advantage of UWB for tracking use a split setup. Moving units, those are the ones being tracked, broadcast a UWB signal continiously. Tracking units are placed in fixed locations and use their known location to determine the unknown location of the moving units. However in our version we would need each unit to act as a tracking and moving unit simultaneously. PDOA (phase difference of arrival) offered a solution. PDOA works by giving each unit two antennas that are spaced a percise distance apart. The implementation isn't unheard of, but UWB with it's high frequency, allows us to space them only millimeters apart which is essential for making a device that can comfortably fit on someone's wrist.
+However there was a downside. Typical systems that take advantage of UWB for tracking use a split setup. Moving units, those are the ones being tracked, broadcast a UWB signal regularly. Tracking units are placed in fixed locations and use their known locations to determine the unknown location of the moving units. However in our version we would need each unit to act as a tracking and moving unit simultaneously. PDOA (phase difference of arrival) offered a solution. PDOA works by giving each unit two antennas that are spaced a percise distance apart. The implementation isn't unheard of, but UWB with it's high frequency, allows us to space them only millimeters apart which is essential for making a device that can comfortably fit on someone's wrist.
 
 However no market solutions exist for this technology. What we did find was some research on using the system in a minimally sized tracker which we could base our own design after.
 
@@ -44,10 +42,16 @@ Our design started by laying out all our requirments. Similar to how we would bu
 
 Building the design first takes place in schematics. We opted to use kicad due to its lower barrier of entry and crossplatform support. If we had longer than a semseter I believe altium would have been an equally good choice. We seperated into pairs in order to design the power, haptics, communication, and the interconnections via the SoC (system on a chip)
 
-<figure>
-  <img src="/projects/smart-watch-2.png" width="500" />
-  <figcaption>power management section</figcaption>
-</figure>
+<div class="image-row">
+  <figure>
+    <img src="/projects/smart-watch-6.png" width="400" />
+    <figcaption>global board layout</figcaption>
+  </figure>
+  <figure>
+    <img src="/projects/smart-watch-2.png" width="500" />
+    <figcaption>power management section</figcaption>
+  </figure>
+</div>
 
 #### PCB Design
 
